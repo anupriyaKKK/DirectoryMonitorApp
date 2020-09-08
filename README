@@ -1,0 +1,51 @@
+**************************************README**********************************************
+
+This is a Java application developed as a JAVA Maven project which accepts a directory path that needs to be monitored as the Command line argument.
+It uses WatchService API provided by Java to keep monitor a given directory and its sub-directories for any change. For this application the only event which is montored is EVENT_CREATE which will get triggered only when a new file or directory will be created.
+If a new directory is added is it also registered to be watched with the WatchService.
+If a new file is created then the file is checked for the compressed GZIP format. If it is compressed then it is decompressed first and then read.
+The absolute file path of the file, file type, first line of the file, the number of rows in the file, and the MD5 checksum of the uploaded file are printed to stdout and also, an email notification is sent to assessment-test@180bytwo.com with all the above details within 10 secs.
+
+Programming Language Used - Java
+jdk version Used - java 13
+IDE Used - IntelliJ
+
+Requirements-
+jdk 13
+
+Input and Output-
+    Input - Path to the Directory (For Example: D:\TestingFolder)
+    Output - File Path, File Type, First Row, Total Rows, MD5 Checksum on stdout and sent as an email notification
+
+Assumptions-
+    1. New files will only be of type ".csv" or ".csv.gz"
+    2. First row of the file will be a Header.
+    3. When a file is renamed it will be treated as a new file.
+
+A demo gmail account is created to send the email notifications.
+    Gmail Account Details -
+        Username: assessment.180bytwo@gmail.com
+        Password: Password@123
+
+Steps to run in IntelliJ IDE -
+    1. Import the project  in Intellij
+    2. Set the program arguments as the directory path
+    3. Run
+    4. Go to directory and create a new CSV file or a GZIPPED CSV file with some data in the given directory
+    5. Check the output on the Console
+            a. It will show print statements for the directory and all sub-directories it register to monitor
+            b. Print the file related output
+            c. Print statement to make sure email notification is sent successfully
+            d. Print the total time taken in the process
+    6. Also, check the email notification in the provided email account "assessment-test@180bytwo.com"
+
+Steps to run using terminal -
+    1. Go to the folder where the jar file exist
+        Location of jar inside project : DirectoryMonitorApp\out\artifacts\DirectoryMonitorApp_jar\DirectoryMonitorApp.jar
+    2. Type command java - jar DirectoryMonitorApp.jar <directory_path>
+    3. Go to directory and create a new CSV file or a GZIPPED CSV file with some data in the given directory
+
+
+
+
+
